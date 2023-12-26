@@ -53,7 +53,7 @@ background-color:#00FFFF;
     <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
   
       <span style="color: rgb(255, 255, 255); margin-top:-10px;font-family:'Trattatello, fantasy	'" class="ms-3 font-weight-bold">
-        <img style="width: 50px;height:50px"  src="../assets/img/winbest.webp">
+        <img style="width: 50px;height:50px"  src="{{asset('assets/img/winbest.webp')}}">
 
           WinBest </span>
     </a>

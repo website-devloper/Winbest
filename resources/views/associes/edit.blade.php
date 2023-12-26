@@ -39,6 +39,17 @@
                     <option value="gérant" {{ $associé->role === 'gérant' ? 'selected' : '' }}>Gérant</option>
                 </select>
             </div>
+            <div class="mb-3">
+                <label for="societe" class="form-label">Societe</label>
+                <select class="form-select" id="societe" name="societe" required>
+                <option value="">Select Company</option>
+
+                @foreach($societes as $societe)
+
+                    <option value="{{$societe->name}}">{{$societe->name}}</option>
+                    @endforeach
+                </select>
+            </div>
 
             <button type="submit" class="btn btn-primary">Update Associé</button>
         </form>

@@ -16,9 +16,9 @@
                 <div class="card-header pb-0">
                     <div class="d-flex flex-row justify-content-between">
                         <div>
-                            <h5 class="mb-0">All Gérants</h5>
+                            <h5 class="mb-0">All Gerants</h5>
                         </div>
-                        <a style="background-color:#00FFFF" href="{{ route('gerants.create') }}" class="btn btn-sm mb-0" type="button">+&nbsp; New Associé</a>
+                        <a style="background-color:#00FFFF" href="{{ route('gerants.create') }}" class="btn btn-sm mb-0" type="button">+&nbsp; New Gerant</a>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
@@ -45,6 +45,9 @@
                                         Role
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Societe
+                                    </th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Creation Date
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -59,12 +62,12 @@
                                             <p class="text-xs font-weight-bold mb-0">{{ $gerant->id }}</p>
                                         </td>
                                         <td>
-                                            <div class="avatar avatar-sm me-3" style="background-color: #{{ substr(md5($gerant->name), 0, 6) }}; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 30px; height: 30px;">
-                                                <span style="color: white; font-size: 14px;">{{ strtoupper(substr($gerant->name, 0, 1)) }}</span>
+                                            <div class="avatar avatar-sm me-3" style="background-color: #{{ substr(md5($gerant->fullName), 0, 6) }}; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 30px; height: 30px;">
+                                                <span style="color: white; font-size: 14px;">{{ strtoupper(substr($gerant->fullName, 0, 1)) }}</span>
                                             </div>
                                         </td>
                                         <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">{{ $gerant->name }}</p>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $gerant->fullName }}</p>
                                         </td>
                                         <td class="text-center">
                                             <p class="text-xs font-weight-bold mb-0">{{ $gerant->email }}</p>
@@ -81,16 +84,20 @@
                                          
                                                 <p class="text-xs font-weight-bold mb-0">{{ $gerant->role }}</p>
                                         </td>
-                                        
-                                        
-                                        
-                                        
-                                        
+
+                                        <td class="text-center">
+    @if ($gerant->societe)
+        <p class="text-xs font-weight-bold mb-0">{{ $gerant->societe->name }}</p>
+    @else
+        <p class="text-xs font-weight-bold mb-0">---</p>
+    @endif
+</td>
+ 
                                         <td class="text-center">
                                             <span class="text-secondary text-xs font-weight-bold">{{ $gerant->created_at->format('d/m/y') }}</span>
                                         </td>
                                         <td class="text-center">
-                                            <a href="{{ route('gerants.edit', $gerant->id) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit Associé">
+                                            <a href="{{ route('gerants.edit',$gerant->id) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit gerant">
                                                 <i class="fas fa-user-edit text-secondary"></i>
                                             </a>
                                            
@@ -99,6 +106,11 @@
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
                                             </form>
+                                        </td>
+                                        <td class="text-center">
+
+                                                <a href=" {{ route('gerants.show', $gerant->id) }}"><button  class="btn btn-primary btn-sm" >details</button></a>
+
                                         </td>
                                     </tr>
                                 @endforeach

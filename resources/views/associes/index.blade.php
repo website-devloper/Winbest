@@ -1,4 +1,3 @@
-<!-- resources/views/associés/index.blade.php -->
 
 @extends('layouts.user_type.auth')
 
@@ -46,6 +45,9 @@
                                         Role
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Societe
+                                    </th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Creation Date
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -61,11 +63,11 @@
                                         </td>
                                         <td>
                                             <div class="avatar avatar-sm me-3" style="background-color: #{{ substr(md5($associé->name), 0, 6) }}; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 30px; height: 30px;">
-                                                <span style="color: white; font-size: 14px;">{{ strtoupper(substr($associé->name, 0, 1)) }}</span>
+                                                <span style="color: white; font-size: 14px;">{{ strtoupper(substr($associé->fullName, 0, 1)) }}</span>
                                             </div>
                                         </td>
                                         <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">{{ $associé->name }}</p>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $associé->fullName }}</p>
                                         </td>
                                         <td class="text-center">
                                             <p class="text-xs font-weight-bold mb-0">{{ $associé->email }}</p>
@@ -82,7 +84,14 @@
                                          
                                                 <p class="text-xs font-weight-bold mb-0">{{ $associé->role }}</p>
                                         </td>
-                                        
+
+                                        <td class="text-center">
+    @if ($associé->societe)
+        <p class="text-xs font-weight-bold mb-0">{{ $associé->societe->name }}</p>
+    @else
+        <p class="text-xs font-weight-bold mb-0">---</p>
+    @endif
+</td>
  
                                         <td class="text-center">
                                             <span class="text-secondary text-xs font-weight-bold">{{ $associé->created_at->format('d/m/y') }}</span>
@@ -98,6 +107,11 @@
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
                                             </form>
                                         </td>
+                                        <td class="text-center">
+
+                                                <a href=" {{ route('associes.show', $associé->id) }}"><button  class="btn btn-primary btn-sm" >details</button></a>
+
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -108,5 +122,4 @@
         </div>
     </div>
 </div>
-
 @endsection

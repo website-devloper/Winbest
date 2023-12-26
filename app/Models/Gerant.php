@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Models;
+use App\Models\societe;
+
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,7 +20,7 @@ class Gerant extends Model
     ];
     
     public function societe()
-{
-    return $this->belongsTo(societe::class, 'societe_id');
-}
+    {
+        return $this->belongsTo(societe::class);
+    }
 }

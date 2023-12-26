@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->String('login');
             $table->String('password');
-            $table->foreignId('societe_Id')->constrained();
+            $table->unsignedBigInteger('societe_id');
+            $table->foreign('societe_id')->references('id')->on('societes');
             $table->timestamps();
         });
     }

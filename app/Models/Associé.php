@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Associé;
+use App\Models\societe;
 
 class Associé extends Model
 {
@@ -19,10 +19,10 @@ class Associé extends Model
         'societe_id'
     ];
 
-public function societe()
-{
-    return $this->belongsTo(societe::class, 'societe_id');
-}
+    public function societe()
+    {
+        return $this->belongsTo(societe::class, 'societe_id');
+    }
 
 
 

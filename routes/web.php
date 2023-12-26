@@ -54,7 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('profile1');
 	})->name('profile1');
 
-
+	
 	Route::get('test', function () {
 		return view('test');
 	})->name('test');
@@ -124,15 +124,15 @@ Route::get('/users/create', [UserController::class, 'edit'])->name('users.edit')
 Route::get('/associes', [AssocieéController::class, 'index'])->name('associes.index');
 Route::get('/associes/create', [AssocieéController::class, 'create'])->name('associes.create');
 Route::post('/associes', [AssocieéController::class, 'store'])->name('associes.store');
+Route::get('/associes/show/{id}', [AssocieéController::class, 'show'])->name('associes.show');
 Route::get('/associes/edit/{id}', [AssocieéController::class, 'edit'])->name('associes.edit');
 Route::put('/associes/update/{id}', [AssocieéController::class, 'update'])->name('associes.update');
 Route::delete('/associes/destroy/{id}', [AssocieéController::class, 'destroy'])->name('associes.destroy');
 //pour le gérants
 Route::get('/gerants', [GerantController::class, 'index'])->name('gerants.index');
 Route::get('/gerants/create', [GerantController::class, 'create'])->name('gerants.create');
-Route::post('/gerants', [GerantController::class, 'store'])->name('gerants.store');
-Route::post('/gerants', [GerantController::class, 'store1'])->name('gerants.store1');
-
+Route::post('/gerants/store', [GerantController::class, 'store'])->name('gerants.store');
 Route::get('/gerants/edit/{id}', [GerantController::class, 'edit'])->name('gerants.edit');
+Route::get('/gerant/show/{id}', [GerantController::class, 'show'])->name('gerants.show');
 Route::put('/gerants/update/{id}', [GerantController::class, 'update'])->name('gerants.update');
 Route::delete('/gerants/destroy/{id}', [GerantController::class, 'destroy'])->name('gerants.destroy');

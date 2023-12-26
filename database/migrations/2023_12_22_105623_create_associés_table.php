@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('cin');
             $table->string('role', 255); 
-            $table->foreignId('societe_id')->constrained();
+            $table->unsignedBigInteger('societe_id');
+            $table->foreign('societe_id')->references('id')->on('societes');
             $table->timestamps();
         });
     }

@@ -1,4 +1,3 @@
-
 @extends('layouts.user_type.auth')
 
 @section('content')
@@ -11,7 +10,7 @@
     </div>
 
     <div class="card-header">
-        <h5 class="mb-0">Create New Gérant</h5>
+        <h5 class="mb-0">Create New Gerant</h5>
     </div>
     <div class="card-body">
         <form method="post" action="{{ route('gerants.store') }}">
@@ -31,12 +30,23 @@
             <div class="mb-3">
                 <label for="role" class="form-label">Role</label>
                 <select class="form-select" id="role" name="role" required>
-
-                    <option value="---">-----</option>
-                    <option value="Gérant">Gérant</option>
-
+                    <option value="user">User</option>
+                    <option value="associé">Associé</option>
+                    <option value="gérant">Gérant</option>
                 </select>
             </div>
+            <div class="mb-3">
+                <label for="societe" class="form-label">Societe</label>
+                <select class="form-select" id="societe" name="societe" required>
+                <option value="">Select Company</option>
+
+                @foreach($societes as $societe)
+
+                    <option value="{{$societe->name}}">{{$societe->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+
 
             <button type="submit" class="btn btn-primary">Create Gerant</button>
         </form>

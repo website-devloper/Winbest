@@ -1,8 +1,18 @@
-
 @extends('layouts.user_type.auth')
 
 @section('content')
-
+<div style="margin-top:-90px;">
+    <form style="margin-left: 250px;" method="POST" action="{{ route('associes.search') }}">
+    @csrf
+        <div  style="width: 440px" class="ms-md-3 pe-md-3 d-flex align-items-center">
+            <div style="margin-right: 15px" class="input-group">
+                <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                <input style="background-color: rgb(255, 255, 255) "  type="text" class="form-control" placeholder="Type here..." name="search"  value="{{ request('search') }}">
+            </div>
+            </div>
+        </form></div><br/><br/>
+<div>
+    
 <div>
     <div style="background-color: rgb(4, 18, 102)" class="alert  mx-4" role="alert">
         <span class="text-white">

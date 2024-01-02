@@ -108,6 +108,29 @@ class AssocieéController extends Controller
     
     
 
+    public function search(Request $request)
+    {
+        $search = $request->search;
+    
+        $associés = Associé::with('societe')
+            ->where(function ($query) use ($search) {
+                $query->where('fullName', 'like', "%$search%")
+                    ->orWhere('email', 'like', "%$search%")
+                    ->orWhere('cin', 'like', "%$search%")
+                    ->orWhere('role', 'like', "%$search%");
+    
+                $query->orWhereHas('societe', function ($subquery) use ($search) {
+                    $subquery->where('name', 'like', "%$search%");
+                });
+            })
+            ->get();
+    
+        return view('associes.index', compact('associés', 'search'));
+    }
+    
+
+
+
     public function destroy($id)
     {
         $associé = Associé::findOrFail($id);

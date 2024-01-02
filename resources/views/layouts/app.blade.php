@@ -34,9 +34,11 @@
   <link rel="stylesheet" href="{{ asset('assets/css/soft-ui-dashboard.css?v=1.0.3') }}">
   <link  style="width: 100px;" rel="icon" href="{{ asset('assets/img/winbest.webp')}}" type="image/x-icon">
 </head>
+
 <style>
   footer{
     margin-left: 700px;
+    
   }
 </style> 
 <body class="g-sidenav-show  bg-gray-100 {{ (\Request::is('rtl') ? 'rtl' : (Request::is('virtual-reality') ? 'virtual-reality' : '')) }} ">

@@ -134,7 +134,25 @@ class GerantController extends Controller
         return redirect()->back()->with('error', 'Societe not found.');
     }
     
-
+    public function search(Request $request)
+    {
+        $search = $request->search;
+    
+        $gerants = Gerant::with('societe')
+            ->where(function ($query) use ($search) {
+                $query->where('fullName', 'like', "%$search%")
+                    ->orWhere('email', 'like', "%$search%")
+                    ->orWhere('cin', 'like', "%$search%")
+                    ->orWhere('role', 'like', "%$search%");
+    
+                $query->orWhereHas('societe', function ($subquery) use ($search) {
+                    $subquery->where('name', 'like', "%$search%");
+                });
+            })
+            ->get();
+    
+        return view('gerants.index', compact('gerants', 'search'));
+    }
 
     public function destroy($id)
     {

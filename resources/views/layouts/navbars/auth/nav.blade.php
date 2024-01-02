@@ -8,10 +8,7 @@
             <h6 class="font-weight-bolder mb-0 text-capitalize">{{ str_replace('-', ' ', Request::path()) }}</h6>
         </nav>
         <div  style="width: 440px" class="ms-md-3 pe-md-3 d-flex align-items-center">
-            <div style="margin-right: 15px" class="input-group">
-                <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                <input style="background-color: rgb(255, 255, 255) "  type="text" class="form-control" placeholder="Type here...">
-            </div>
+            
             </div>
        
             <ul class="navbar-nav  justify-content-end">

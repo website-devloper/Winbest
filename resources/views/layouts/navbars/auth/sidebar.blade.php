@@ -39,8 +39,6 @@ background-color:#00FFFF;
 .do svg{
   border-radius: 4.5px;
 }
-
-
 </style>
 <body>
   
@@ -53,7 +51,8 @@ background-color:#00FFFF;
     <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
   
       <span style="color: rgb(255, 255, 255); margin-top:-10px;font-family:'Trattatello, fantasy	'" class="ms-3 font-weight-bold">
-        <img style="width: 50px;height:50px"  src="{{asset('assets/img/winbest.webp')}}">
+
+        <img style="width: 50px;height:50px;color:white"  src="{{ asset('assets/img/winbest.webp') }}">
 
           WinBest </span>
     </a>
@@ -88,7 +87,7 @@ background-color:#00FFFF;
 </li>
     
       <li class="user" style="margin-left: -5px" class="nav-item mt-3">
-        <a class="nav-link " href="{{ route('associes.index') }}">
+        <a class="nav-link " href="{{ route('societes.index') }}">
             <div style="background-color:#00FFFF" class="icon icon-shape icon-sm shadow border-radius-md  text-center me-2 d-flex align-items-center justify-content-center">
               <?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.0//EN' 
                'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
@@ -99,7 +98,7 @@ background-color:#00FFFF;
                 <path d="M18.5,13c-1.2,0-2.1,0.3-2.8,0.8c2.3,1.1,3.2,3,3.2,3.2l0,0.1H23v-1.3C23,15.7,21.9,13,18.5,13z"/></g></g><g><g><circle cx="18.5" cy="8.5" r="2.5"/></g><g><path d="M18.5,13c-1.2,0-2.1,0.3-2.8,0.8c2.3,1.1,3.2,3,3.2,3.2l0,0.1H23v-1.3C23,15.7,21.9,13,18.5,13z"/></g></g><g><g><circle cx="5.5" cy="8.5" r="2.5"/></g><g>
                 <path d="M5.5,13c1.2,0,2.1,0.3,2.8,0.8c-2.3,1.1-3.2,3-3.2,3.2l0,0.1H1v-1.3C1,15.7,2.1,13,5.5,13z"/></g></g></svg>
             </div>
-            <span style="color: white" class="nav-link-text ms-1">Users</span>
+            <span style="color: white" class="nav-link-text ms-1">Sociétés</span>
         </a>
       </li>
      
@@ -123,6 +122,44 @@ background-color:#00FFFF;
             <span class="nav-link-text ms-1">Gérants</span>
         </a>
       </li>
+      <li style="margin-left: -5px" class="nav-item pb-2">
+        <a class="nav-link" href="{{ route('damancoms.index') }}">
+            <div style="background-color:#00FFFF" class="icon  icon-sm shadow border-radius-md  text-center me-2 d-flex align-items-center justify-content-center">
+                
+              <i style="font-size: 1rem;color:black" class="	fas fa-handshake ps-2 pe-2 text-center text-dark {{ (Request::is('user-management') ? 'text-dark' : 'text-dark') }} " aria-hidden="true"></i>
+            </div>
+            <span style="color: white" class="nav-link-text ms-1">Damancom	</span>
+        </a>
+      </li>
+      <li style="margin-left: -5px" class="nav-item pb-2">
+        <a class="nav-link" href="{{ route('impots.index') }}">
+            <div style="background-color:#00FFFF" class="icon  icon-sm shadow border-radius-md  text-center me-2 d-flex align-items-center justify-content-center">
+                
+              <i style="font-size: 1rem;color:black" class="	fas fa-handshake ps-2 pe-2 text-center text-dark {{ (Request::is('user-management') ? 'text-dark' : 'text-dark') }} " aria-hidden="true"></i>
+            </div>
+            <span style="color: white" class="nav-link-text ms-1">Impots	</span>
+        </a>
+      </li>
+
+      <li style="margin-left: -5px" class="nav-item pb-2">
+        <a class="nav-link" href="{{ route('cimr.index') }}">
+            <div style="background-color:#00FFFF" class="icon  icon-sm shadow border-radius-md  text-center me-2 d-flex align-items-center justify-content-center">
+                
+              <i style="font-size: 1rem;color:black" class="	fas fa-handshake ps-2 pe-2 text-center text-dark {{ (Request::is('user-management') ? 'text-dark' : 'text-dark') }} " aria-hidden="true"></i>
+            </div>
+            <span style="color: white" class="nav-link-text ms-1">CIMR	</span>
+        </a>
+      </li>
+      <li style="margin-left: -5px" class="nav-item pb-2">
+        <a class="nav-link" href="{{ route('regus.index') }}">
+            <div style="background-color:#00FFFF" class="icon  icon-sm shadow border-radius-md  text-center me-2 d-flex align-items-center justify-content-center">
+                
+              <i style="font-size: 1rem;color:black" class="	fas fa-handshake ps-2 pe-2 text-center text-dark {{ (Request::is('user-management') ? 'text-dark' : 'text-dark') }} " aria-hidden="true"></i>
+            </div>
+            <span style="color: white" class="nav-link-text ms-1">REGUS	</span>
+        </a>
+      </li>
+
 <hr>     
  <li style="margin-left: -5px" class="nav-item">
 
@@ -149,7 +186,7 @@ background-color:#00FFFF;
       </li>
       
       <li style="margin-left: -5px" class="nav-item">
-        <a class="nav-link" href="{{ url('profile1') }}">
+        <a class="nav-link" href="{{ url('rtl') }}">
           <div style="background-color:#00FFFF" class="icon icon-shape icon-sm shadow border-radius-md  text-center me-2 d-flex align-items-center justify-content-center">
             <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <title>settings</title>

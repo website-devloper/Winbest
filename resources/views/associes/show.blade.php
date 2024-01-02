@@ -2,101 +2,112 @@
 
 @section('content')
 <style>
-.container {
-            height: 100%;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
+    .container {
+        margin: 20px auto;
+        max-width: 98%;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        background-color: #fff;
+    }
 
-        .details {
-            width: 80%;
-            padding: 20px;
-            text-align: left;
-        }
+    .details-section {
+        margin-bottom: 20px;
+    }
 
-        .details h2 {
-            color: #333;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
+    .details-section h4 {
+        color: #333;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
 
-        .details ul {
-            list-style: none;
-            padding: 0;
-        }
+    .details-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 
-        .details li {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-
+    .details-list li {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 10px;
+        display: block; /* Set display to block for vertical layout */
+    }
 </style>
-<div>
-    <div style="background-color: rgb(4, 18, 102)" class="alert  mx-4" role="alert">
+<div style="background-color: rgb(4, 18, 102)" class="alert  mx-4" role="alert">
         <span class="text-white">
             <strong>Add, Edit, Delete you can use all functional!</strong> 
         </span>
     </div>
 
-    <div class="container">
-    <div class="details">
-        <h3>Employee Information</h3>
-        <ul>
-            <li><strong>Full Name : </strong>{{$associe->fullName}}</li>
-            <li><strong>Email : </strong> {{$associe->email}}</li>
-            <li><strong>Ncin : </strong> {{$associe->cin}}</li>
-        </ul>
+   
 
-        <h3>Societe Information</h3>
-        <ul>
-            <li><strong>Societe Name : </strong>{{$associe->societe->name}}</li>
-            <li><strong>Forme Juridique : </strong>{{$associe->societe->formeJuri}}</li>
-            <li><strong>Siege Social : </strong>{{$associe->societe->siegeSocial}}</li>
-            <li><strong>Capital : </strong>{{$associe->societe->capital}}</li>
-            <li><strong>Activite Principal : </strong>{{$associe->societe->activiteprincipal}}</li>
-            <li><strong>RC : </strong>{{$associe->societe->RC}}</li>
-            <li><strong>Patente : </strong>{{$associe->societe->patente}}</li>
-            <li><strong>IF : </strong>{{$associe->societe->IF}}</li>
-            <li><strong>CNSS : </strong>{{$associe->societe->CNSS}}</li>
-            <li><strong>ICE : </strong>{{$associe->societe->ICE}}</li>
-            <li><strong>RIB : </strong>{{$associe->societe->RIB}}</li>
-            <li><strong>dateexploitation : </strong>{{$associe->societe->dateexploitation}}</li>
-            <li><strong>dateDbDexploitatiion : </strong>{{$associe->societe->dateDbDexploitatiion}}</li>
+ 
 
-        </ul>
-
-        <h3>Damancom Information</h3>
-        <ul>
-            <li><strong>Login:</strong>----------</li>
-            <li><strong>Password:</strong>----------</li>
-        </ul>
-
-        <h3>Impots Information</h3>
-        <ul>
-            <li><strong>Login:</strong>----------</li>
-            <li><strong>Password:</strong>----------</li>
-        </ul>
-
-        <h3>CIMR Information</h3>
-        <ul>
-            <li><strong>Login:</strong>----------</li>
-            <li><strong>Password:</strong>----------</li>
-        </ul>
-
-        <h3>Regus Information</h3>
-        <ul>
-            <li><strong>Login:</strong>----------</li>
-            <li><strong>Password:</strong>----------</li>
+<div class="container">
+<a href="{{route('associes.index')}}"><button type="submit" class="btn btn-primary">Back</button></a>
+    <div class="details-section">
+        <h4>Employee Information:</h4>
+        <ul class="details-list row">
+            <div class="col-md-4"><li><strong>Full Name:</strong> {{$associe->fullName}}</li></div>
+            <div class="col-md-4"><li><strong>Email:</strong> {{$associe->email}}</li></div>
+            <div class="col-md-4"><li><strong>Ncin:</strong> {{$associe->cin}}</li></div>
+            
+            
+            
         </ul>
     </div>
-</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+    <div class="details-section">
+        <h4>Societe Information:</h4>
+        <ul class="details-list row">
+            <li class="col-md-4"><strong>Societe Name:</strong> {{$associe->societe->name}}</li>
+            <li class="col-md-4"><strong>Forme Juridique:</strong> {{$associe->societe->formeJuri}}</li>
+            <li class="col-md-4"><strong>Siege Social:</strong> {{$associe->societe->siegeSocial}}</li>
+            <li class="col-md-4"><strong>Capital:</strong> {{$associe->societe->capital}}</li>
+            <li class="col-md-4"><strong>Activite Principal:</strong> {{$associe->societe->activiteprincipal}}</li>
+            <li class="col-md-4"><strong>RC:</strong> {{$associe->societe->RC}}</li>
+            <li class="col-md-4"><strong>Patente:</strong> {{$associe->societe->patente}}</li>
+            <li class="col-md-4"><strong>IF:</strong> {{$associe->societe->IF}}</li>
+            <li class="col-md-4"><strong>CNSS:</strong> {{$associe->societe->CNSS}}</li>
+            <li class="col-md-4"><strong>ICE:</strong> {{$associe->societe->ICE}}</li>
+            <li class="col-md-4"><strong>RIB:</strong> {{$associe->societe->RIB}}</li>
+            <li class="col-md-4"><strong>Date Exploitation:</strong> {{$associe->societe->dateexploitation}}</li>
+            <li class="col-md-4"><strong>Date DbDexploitation:</strong> {{$associe->societe->dateDbDexploitatiion}}</li>
+        </ul>
+    </div>
+
+    <div class="details-section">
+        <h4>Damancom Information:</h4>
+        <ul class="details-list row">
+            <li class="col-md-4"><strong>Login:</strong> ----------</li>
+            <li class="col-md-4"><strong>Password:</strong> ----------</li>
+        </ul>
+    </div>
+
+    <div class="details-section">
+        <h4>Impots Information:</h4>
+        <ul class="details-list row">
+            <li class="col-md-4"><strong>Login:</strong> ----------</li>
+            <li class="col-md-4"><strong>Password:</strong> ----------</li>
+        </ul>
+    </div>
+
+    <div class="details-section">
+        <h4>CIMR Information:</h4>
+        <ul class="details-list row">
+            <li class="col-md-4"><strong>Login:</strong> ----------</li>
+            <li class="col-md-4"><strong>Password:</strong> ----------</li>
+        </ul>
+    </div>
+
+    <div class="details-section">
+        <h4>Regus Information:</h4>
+        <ul class="details-list row">
+            <li class="col-md-4"><strong>Login:</strong> ----------</li>
+            <li class="col-md-4"> <strong>Password:</strong> ----------</li>
+        </ul>
     </div>
 </div>
 

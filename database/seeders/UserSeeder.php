@@ -24,5 +24,14 @@ class UserSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+        DB::table('users')->insert([
+            'id' => 2,
+            'fullName' => 'Super Admin',
+            'email' => 'super-admin@marwabenharda.com',
+            'password' => Hash::make('1234'),
+            'role' => 'super-admin',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
     }
 }

@@ -12,7 +12,7 @@ class DamancomController extends Controller
     public function index()
     {
         
-        $damancoms =Damancom::All();
+        $damancoms =Damancom::paginate(5);
 
         return view('damancoms.index', compact('damancoms'));
     }
@@ -50,6 +50,8 @@ class DamancomController extends Controller
             $newDamanCom->societe_id =$request->input('societe_id');
     
             $newDamanCom->save();
+            toastrNotification('success', 'Damancom created successfully');
+
         return redirect()->route('damancoms.index');
     }
     
@@ -73,6 +75,8 @@ class DamancomController extends Controller
         ]);
     
         $damancom->update($request->all());
+        toastrNotification('success', 'Damancom updated successfully');
+
 
         return redirect()->route('damancoms.index');
     }
@@ -81,6 +85,7 @@ class DamancomController extends Controller
     {
         $damancom = Damancom::findOrFail($id);
         $damancom->delete();
+        toastrNotification('warning', 'Damancom deleted successfully');
 
         return redirect()->route('damancoms.index')->with('success', 'Associé deleted successfully');
     }

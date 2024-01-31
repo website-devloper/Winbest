@@ -38,11 +38,11 @@ class SessionsController extends Controller
     }
     
     
-    public function destroy()
-    {
+    // public function destroy()
+    // {
 
-        Auth::logout();
+    //     Auth::logout();
 
-        return redirect('/login')->with(['success'=>'You\'ve been logged out.']);
-    }
+    //     return redirect('/login')->with(['success'=>'You\'ve been logged out.']);
+    // }
 }

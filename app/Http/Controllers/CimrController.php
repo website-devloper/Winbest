@@ -10,21 +10,21 @@ class CimrController extends Controller
     public function index()
     {
         
-        $cimrs =Cimr::All();
+        $cimrs =Cimr::paginate(5);
 
         return view('cimrs.index', compact('cimrs'));
     }
 
-    // public function show($id)
-    // {
-    //     $damancom = Damancom::find($id);
+    public function show($id)
+    {
+        $cimr = Cimr::find($id);
     
-    //     if (!$damancom) {
-    //         abort(404); 
-    //     }
+        if (!$cimr) {
+            abort(404); 
+        }
     
-    //     return view('damancoms.show', compact('damancom'));
-    // }
+        return view('cimrs.show', compact('cimr'));
+    }
 
     public function create()
     {
@@ -50,6 +50,9 @@ class CimrController extends Controller
             $newCimr->societe_id =$request->input('societe_id');
     
             $newCimr->save();
+
+            toastrNotification('success', 'Cimr created successfully');
+
         return redirect()->route('cimr.index');
     }
     
@@ -74,6 +77,7 @@ class CimrController extends Controller
         ]);
     
         $Cimr->update($request->all());
+        toastrNotification('success', 'Cimr updated successfully');
 
         return redirect()->route('cimr.index');
     }
@@ -82,6 +86,7 @@ class CimrController extends Controller
     {
         $cimr = Cimr::findOrFail($id);
         $cimr->delete();
+        toastrNotification('error', 'Cimr deleted successfully');
 
         return redirect()->route('cimr.index')->with('success', 'Associé deleted successfully');
     }

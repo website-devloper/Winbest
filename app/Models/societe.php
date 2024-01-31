@@ -35,7 +35,7 @@ class societe extends Model
         return $this->hasMany(Associé::class, 'societe_id');
     }
 
-    public function gerant()
+    public function gerants()
     {
         return $this->hasMany(Gerant::class, 'societe_id');
     }

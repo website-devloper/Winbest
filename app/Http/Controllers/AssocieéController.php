@@ -9,14 +9,13 @@ use App\Models\societe;
 
 class AssocieéController extends Controller
 {
-
-
     public function index()
     {
            $associés = Associé::join('societes', 'associés.societe_id', '=', 'societes.id')
                         ->where('associés.role', 'associé')
                         ->select('associés.*', 'societes.name as societe_name')
-                        ->get();
+                        ->paginate(5);
+                        
         return view('associes.index', compact('associés'));
     }
 
@@ -49,7 +48,9 @@ class AssocieéController extends Controller
             ]);
     
             $newAssocié->save();
-            
+
+            toastrNotification('success', 'associe created successfully');
+
             return redirect()->route('associes.index');
         }
     
@@ -99,7 +100,8 @@ class AssocieéController extends Controller
             $associé->societe_id = $societe->id;
     
             $associé->save();
-    
+            toastrNotification('info', 'associe updated successfully');
+
             return redirect()->route('associes.index');
         }
     
@@ -135,6 +137,8 @@ class AssocieéController extends Controller
     {
         $associé = Associé::findOrFail($id);
         $associé->delete();
+        toastrNotification('error', 'associe deleted successfully');
+
 
         return redirect()->route('associes.index')->with('success', 'Associé deleted successfully');
     }

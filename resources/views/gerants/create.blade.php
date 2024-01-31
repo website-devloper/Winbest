@@ -4,13 +4,30 @@
 
 <div class="card mb-4 mx-4">
     <div style="background-color: rgb(4, 18, 102)" class="alert  mx-4" role="alert">
+    @if(session('role')==='super-admin')
         <span class="text-white">
-            <strong>Add, Edit, Delete you can use all functional!</strong> 
+        <strong>Ajouter, Modifiér, Supprimer tu peux faire tous les fonctionalités!</strong> 
         </span>
     </div>
+@endif
+@if(session('role')==='admin')
+        <span class="text-white">
+        <strong>Tu peut Seulement Ajouter </strong> 
+        </span>
+    </div>
+@endif
+
+@if(session('role')==='gerant' || session('role')==='associe')
+        <span class="text-white">
+        <strong>Tu peut Seulement voir Les donnees</strong> 
+        </span>
+    </div>
+    </div>
+@endif
+    
 
     <div class="card-header">
-        <h5 class="mb-0">Create New Gerant</h5>
+        <h5 class="mb-0">Creer nouveau Gerant</h5>
     </div>
     <div class="card-body">
         <form method="post" action="{{ route('gerants.store') }}">
@@ -48,7 +65,7 @@
             </div>
 
 
-            <button type="submit" class="btn btn-primary">Create Gerant</button>
+            <button type="submit" class="btn btn-primary">Creer Gerant</button>
         </form>
     </div>
 </div>

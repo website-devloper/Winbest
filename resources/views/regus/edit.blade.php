@@ -4,13 +4,30 @@
 
 <div class="card mb-4 mx-4">
     <div style="background-color: rgb(4, 18, 102)" class="alert  mx-4" role="alert">
+    @if(session('role')==='super-admin')
         <span class="text-white">
-            <strong>Add, Edit, Delete you can use all functional!</strong>
+        <strong>Ajouter, Modifiér, Supprimer tu peux faire tous les fonctionalités!</strong> 
         </span>
     </div>
+@endif
+@if(session('role')==='admin')
+        <span class="text-white">
+        <strong>Tu peut Seulement Ajouter </strong> 
+        </span>
+    </div>
+@endif
+
+@if(session('role')==='gerant' || session('role')==='associe')
+        <span class="text-white">
+        <strong>Tu peut Seulement voir Les donnees</strong> 
+        </span>
+    </div>
+    </div>
+@endif
+
 
     <div class="card-header">
-        <h5 class="mb-0">Edit Regus</h5>
+        <h5 class="mb-0">Editer Regus</h5>
     </div>
     <div class="card-body">
         <form method="post" action="{{ route('regus.update', $regus->id) }}">
@@ -39,7 +56,7 @@
             </div>
            
 
-            <button type="submit" class="btn btn-primary">Update Regus</button>
+            <button type="submit" class="btn btn-primary">Modifier Regus</button>
         </form>
     </div>
 </div>

@@ -37,9 +37,25 @@
 </style>
 
 <div style="background-color: rgb(4, 18, 102)" class="alert  mx-4" role="alert">
+@if(session('role')==='super-admin')
         <span class="text-white">
-            <strong>Add, Edit, Delete you can use all functional!</strong> 
+        <strong>Ajouter, Modifiér, Supprimer tu peux faire tous les fonctionalités!</strong> 
         </span>
+    </div>
+@endif
+@if(session('role')==='admin')
+        <span class="text-white">
+        <strong>Tu peut Seulement Ajouter </strong> 
+        </span>
+    </div>
+@endif
+
+@if(session('role')==='gerant' || session('role')==='associe')
+        <span class="text-white">
+        <strong>Tu peut Seulement voir Les donnees</strong> 
+        </span>
+    </div>
+@endif
     </div>
 
 
@@ -50,7 +66,7 @@
 
 
     <div class="details-section">
-        <h4>Societe Informations:</h4>
+        <h4>Les Informations de societe:</h4>
         <ul class="details-list row">
             <li class="col-md-4"><strong>Societe Name:</strong> {{$societe->name}}</li>
             <li class="col-md-4"><strong>Forme Juridique:</strong> {{$societe->formeJuri}}</li>
@@ -70,7 +86,7 @@
 
     <div class="details-section">
     
-        <h4>Damancom Informations:</h4>
+        <h4>Les Informations de damancom:</h4>
         <ul class="details-list row">
             <li class="col-md-4"><strong>Login:</strong> {{$damancomInfo->login}}<li>
             <li class="col-md-4"><strong>Password:</strong> {{$damancomInfo->password}}<li>
@@ -78,7 +94,7 @@
     </div>
 
     <div class="details-section">
-        <h4>Impots Informations:</h4>
+        <h4>Les Informations de Impot:</h4>
         <ul class="details-list row">
             <li class="col-md-4"><strong>Login:</strong> {{$impotInfo->login}}</li>
             <li class="col-md-4"><strong>Password:</strong> {{$impotInfo->password}}</li>
@@ -86,7 +102,7 @@
     </div>
 
     <div class="details-section">
-        <h4>CIMR Informations:</h4>
+        <h4>Les Informations de Cimr:</h4>
         <ul class="details-list row">
             <li class="col-md-4"><strong>Login:</strong> {{$cimrInfo->login}}<li>
             <li class="col-md-4"><strong>Password:</strong> {{$cimrInfo->password}}<li>
@@ -94,7 +110,7 @@
     </div>
 
     <div class="details-section">
-        <h4>Regus Informations:</h4>
+        <h4>Les Informations de regus:</h4>
         <ul class="details-list row">
             <li class="col-md-4"><strong>Login:</strong> {{$regusInfo->login}}</li>
             <li class="col-md-4"> <strong>Password:</strong> {{$regusInfo->password}}</li>

@@ -10,7 +10,16 @@ class SocieteController extends Controller
 {
     public function index()
     {
-        $societes = Societe::all();
+        $societes = Societe::with('associés', 'gerants')->paginate(5);
+
+        $societes->each(function ($societe) {
+        $societe->nbrAss = optional($societe->associés)->count() ?? 0;
+        $societe->nbrGer = optional($societe->gerants)->count() ?? 0;
+
+        $societe->associesInfo = $societe->associés;
+        $societe->gerantsInfo = $societe->gerants;
+
+    });
         return view('societes.index', compact('societes'));
     }
 
@@ -53,8 +62,10 @@ class SocieteController extends Controller
          $newsociete->dateDbDexploitatiion = $request->input('dateDbDexploitatiion');
 
         $newsociete->save();
-    
-        return redirect()->route('societes.index')->with('success', 'User created successfully.');
+
+        toastrNotification('success', 'Societe created successfully');
+
+        return redirect()->route('societes.index');
     }
     
     public function edit($id)
@@ -98,8 +109,9 @@ public function update(Request $request, $id)
     $societes->dateDbDexploitatiion = $request->input('dateDbDexploitatiion');
 
     $societes->save();
+    toastrNotification('success', 'Societe updated successfully');
 
-    return redirect()->route('societes.index')->with('success', 'societe updated successfully');
+    return redirect()->route('societes.index');
 }
 
 public function show($id)
@@ -130,6 +142,27 @@ public function show($id)
 
     return view('societes.show', compact('societe','damancomInfo','impotInfo','regusInfo','cimrInfo'));
 }
+// -----------------------------------------------
+
+
+public function showAss($id)
+{
+        $societe=Societe::FindOrfail($id);
+        $S=Societe::FindOrfail($id);
+        $societe->associesInfo = $societe->associés;
+        return view('societes.showAss', compact('societe','S'));
+
+}
+// --------------------------
+
+public function showGer($id)
+{        
+    $societe=Societe::FindOrfail($id);
+    $S=Societe::FindOrfail($id);
+    $societe->gerantsInfo = $societe->gerants;
+    return view('societes.showGer', compact('societe','S'));
+
+}
 
 
 public function destroy($id)
@@ -156,7 +189,7 @@ public function search(Request $request)
             ->orWhere('ICE', 'like', "%$search%")
             ->orWhere('RIB', 'like', "%$search%");
     })->get();
-
+    toastrNotification('warning', 'Societe deleted successfully');
     return view('societes.index', compact('societes', 'search'));
 }
 

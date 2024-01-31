@@ -11,7 +11,7 @@ class RegusController extends Controller
     public function index()
     {
         
-        $reguses =Regus::All();
+        $reguses =Regus::paginate(5);
 
         return view('regus.index', compact('reguses'));
     }
@@ -44,6 +44,7 @@ class RegusController extends Controller
         ]);
 
         Regus::create($request->all());
+        toastrNotification('success', 'Regus created successfully');
 
         return redirect()->route('regus.index')->with('success', 'regus created successfully.');
     }
@@ -67,6 +68,7 @@ class RegusController extends Controller
         ]);
 
         $Regus->update($request->all());
+        toastrNotification('success', 'Regus updated successfully');
 
         return redirect()->route('regus.index')->with('success', 'regus updated successfully');
     }
@@ -75,6 +77,7 @@ class RegusController extends Controller
     {
         $impot = Regus::findOrFail($id);
         $impot->delete();
+        toastrNotification('warning', 'Regus deleted successfully');
 
         return redirect()->route('regus.index')->with('success', 'regus deleted successfully');
     }

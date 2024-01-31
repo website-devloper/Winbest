@@ -4,9 +4,25 @@
 
 <div>
     <div style="background-color: rgb(4, 18, 102)" class="alert  mx-4" role="alert">
+    @if(session('role')==='super-admin')
         <span class="text-white">
-            <strong>Ajouter, Modifiér, Supprimer etafficher tu peux faire tous les fonctionalités!</strong> 
+        <strong>Ajouter, Modifiér, Supprimer tu peux faire tous les fonctionalités!</strong> 
         </span>
+    </div>
+@endif
+@if(session('role')==='admin')
+        <span class="text-white">
+        <strong>Tu peut Seulement Ajouter </strong> 
+        </span>
+    </div>
+@endif
+
+@if(session('role')==='gerant' || session('role')==='associe')
+        <span class="text-white">
+        <strong>Tu peut Seulement voir Les donnees</strong> 
+        </span>
+    </div>
+@endif
     </div>
 
     <div class="row">

@@ -2,15 +2,32 @@
 
 @section('content')
 <div style="background-color: rgb(4, 18, 102)" class="alert  mx-4" role="alert">
+@if(session('role')==='super-admin')
         <span class="text-white">
-            <strong>Add, Edit, Delete you can use all functional!</strong> 
+        <strong>Ajouter, Modifiér, Supprimer tu peux faire tous les fonctionalités!</strong> 
         </span>
     </div>
+@endif
+@if(session('role')==='admin')
+        <span class="text-white">
+        <strong>Tu peut Seulement Ajouter </strong> 
+        </span>
+    </div>
+@endif
+
+@if(session('role')==='gerant' || session('role')==='associe')
+        <span class="text-white">
+        <strong>Tu peut Seulement voir Les donnees</strong> 
+        </span>
+    </div>
+    </div>
+@endif
+    
 <div class="card mb-4 mx-4">
 
 
     <div class="card-header">
-        <h5 class="mb-0">Create New Damancom</h5>
+        <h5 class="mb-0">Creer Nouveau Damancom</h5>
     </div>
     <div class="card-body">
         <form method="POST" action="{{ route('damancoms.store') }}">
@@ -36,7 +53,7 @@
             </select>
         </div>
 
-            <button type="submit" class="btn btn-primary">Create damancom</button>
+            <button type="submit" class="btn btn-primary">creer damancom</button>
         </form>
     </div>
 </div>

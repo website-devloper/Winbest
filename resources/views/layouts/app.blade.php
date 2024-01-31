@@ -33,6 +33,18 @@
   <!-- CSS Files -->
   <link rel="stylesheet" href="{{ asset('assets/css/soft-ui-dashboard.css?v=1.0.3') }}">
   <link  style="width: 100px;" rel="icon" href="{{ asset('assets/img/winbest.webp')}}" type="image/x-icon">
+  <!-- Include Toastr CSS -->
+<link rel="stylesheet" href="/path/to/toastr.min.css">
+<!-- Add the Toastr CSS file link -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+<!-- Add jQuery and Toastr JS files -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+<!-- Include Toastr JS -->
+<script src="/path/to/toastr.min.js"></script>
+
 </head>
 
 <style>
@@ -40,6 +52,11 @@
     margin-left: 700px;
     
   }
+        th {
+            font-weight: bolder;
+            font-size: 18px; /* Adjust the font size as needed */
+            color: black;
+        }
 </style> 
 <body class="g-sidenav-show  bg-gray-100 {{ (\Request::is('rtl') ? 'rtl' : (Request::is('virtual-reality') ? 'virtual-reality' : '')) }} ">
   
@@ -70,22 +87,14 @@
   </script>
 
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
-  <footer style="margin-left: 430px;margin-top:-28px" class="footer pt-4 ">
-    <div class="container-fluid">
-        <div class="row align-items-center justify-content-lg-between">
-            <div class="col-lg-6 mb-lg-0 mb-9">
-                <div class="copyright text-center text-sm text-muted text-lg-start">
-                    © <script>
-                        document.write(new Date().getFullYear()) 
-                    </script>, made  <i class="fa fa-heart"></i> by
-                    <a href="https://www.nettoyage-casablanca-maroc.com/" class="font-weight-bold" target="_blank">Creative Tim are Marwa and Fatime zahra .
-                    </a>
-                </div>
-            </div>
-          
-        </div>
-    </div>
-</footer>
+  <div class="copyright text-muted text-center mb-3">
+    © <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart"></i> by
+    <a href="https://www.nettoyage-casablanca-maroc.com/" class="font-weight-bold" target="_blank">Creative Tim are Marwa and Fatime zahra.</a>
+</div>
+
+
+
+
 
 </body>
 

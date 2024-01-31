@@ -10,7 +10,7 @@ class ImpotController extends Controller
     public function index()
     {
         
-        $impots =Impot::All();
+        $impots =Impot::paginate(5);
 
         return view('impots.index', compact('impots'));
     }
@@ -49,6 +49,8 @@ class ImpotController extends Controller
         $newImpot->societe_id =$request->input('societe_id');
 
         $newImpot->save();
+        toastrNotification('success', 'Impot created successfully');
+
 
         return redirect()->route('impots.index')->with('success', 'Impot created successfully.');
     }
@@ -72,6 +74,7 @@ class ImpotController extends Controller
         ]);
 
         $impot->update($request->all());
+        toastrNotification('success', 'Impot updated successfully');
 
         return redirect()->route('impots.index')->with('success', 'Impot updated successfully');
     }
@@ -80,6 +83,7 @@ class ImpotController extends Controller
     {
         $impot = Impot::findOrFail($id);
         $impot->delete();
+        toastrNotification('warning', 'Impot deleted successfully');
 
         return redirect()->route('impots.index')->with('success', 'Impot deleted successfully');
     }

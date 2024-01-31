@@ -36,9 +36,25 @@
     }
 </style>
 <div style="background-color: rgb(4, 18, 102)" class="alert  mx-4" role="alert">
+@if(session('role')==='super-admin')
         <span class="text-white">
-            <strong>Add, Edit, Delete you can use all functional!</strong> 
+        <strong>Ajouter, Modifiér, Supprimer tu peux faire tous les fonctionalités!</strong> 
         </span>
+    </div>
+@endif
+@if(session('role')==='admin')
+        <span class="text-white">
+        <strong>Tu peut Seulement Ajouter </strong> 
+        </span>
+    </div>
+@endif
+
+@if(session('role')==='gerant' || session('role')==='associe')
+        <span class="text-white">
+        <strong>Tu peut Seulement voir Les donnees</strong> 
+        </span>
+    </div>
+@endif
     </div>
 
    
@@ -46,9 +62,9 @@
  
 
 <div class="container">
-<a href="{{route('associes.index')}}"><button type="submit" class="btn btn-primary">Back</button></a>
+<a href="{{route('associes.index')}}"><button type="submit" class="btn btn-primary">Retour</button></a>
     <div class="details-section">
-        <h4>Employee Information:</h4>
+        <h4>Les informations de employee:</h4>
         <ul class="details-list row">
             <div class="col-md-4"><li><strong>Full Name:</strong> {{$associe->fullName}}</li></div>
             <div class="col-md-4"><li><strong>Email:</strong> {{$associe->email}}</li></div>
@@ -60,7 +76,7 @@
     </div>
 
     <div class="details-section">
-        <h4>Societe Information:</h4>
+        <h4>Les Informations de Societe:</h4>
         <ul class="details-list row">
             <li class="col-md-4"><strong>Societe Name:</strong> {{$associe->societe->name}}</li>
             <li class="col-md-4"><strong>Forme Juridique:</strong> {{$associe->societe->formeJuri}}</li>
@@ -75,38 +91,6 @@
             <li class="col-md-4"><strong>RIB:</strong> {{$associe->societe->RIB}}</li>
             <li class="col-md-4"><strong>Date Exploitation:</strong> {{$associe->societe->dateexploitation}}</li>
             <li class="col-md-4"><strong>Date DbDexploitation:</strong> {{$associe->societe->dateDbDexploitatiion}}</li>
-        </ul>
-    </div>
-
-    <div class="details-section">
-        <h4>Damancom Information:</h4>
-        <ul class="details-list row">
-            <li class="col-md-4"><strong>Login:</strong> ----------</li>
-            <li class="col-md-4"><strong>Password:</strong> ----------</li>
-        </ul>
-    </div>
-
-    <div class="details-section">
-        <h4>Impots Information:</h4>
-        <ul class="details-list row">
-            <li class="col-md-4"><strong>Login:</strong> ----------</li>
-            <li class="col-md-4"><strong>Password:</strong> ----------</li>
-        </ul>
-    </div>
-
-    <div class="details-section">
-        <h4>CIMR Information:</h4>
-        <ul class="details-list row">
-            <li class="col-md-4"><strong>Login:</strong> ----------</li>
-            <li class="col-md-4"><strong>Password:</strong> ----------</li>
-        </ul>
-    </div>
-
-    <div class="details-section">
-        <h4>Regus Information:</h4>
-        <ul class="details-list row">
-            <li class="col-md-4"><strong>Login:</strong> ----------</li>
-            <li class="col-md-4"> <strong>Password:</strong> ----------</li>
         </ul>
     </div>
 </div>

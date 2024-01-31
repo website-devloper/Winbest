@@ -10,7 +10,7 @@ class GerantController extends Controller
 {
     public function index()
     {
-        $gerants = Gerant::with('societe')->get();
+        $gerants = Gerant::with('societe')->paginate(5);
         
         return view('gerants.index', compact('gerants'));
     }
@@ -46,11 +46,12 @@ class GerantController extends Controller
     $newGerant->societe_id = $societe->id;
 
     $newGerant->save();
+    toastrNotification('success', 'Gerant created successfully');
 
     return redirect()->route('gerants.index');
             
         }
-        return redirect()->back()->with('error', 'Societe not found.');
+        return redirect()->back()->with('error', 'gerant not found.');
     }
     
 
@@ -127,7 +128,8 @@ class GerantController extends Controller
             $gerant->societe_id = $societe->id;
     
             $gerant->save();
-    
+            toastrNotification('success', 'Gerant updated successfully');
+
             return redirect()->route('gerants.index');
         }
     
@@ -158,6 +160,8 @@ class GerantController extends Controller
     {
         $gerants = Gerant::findOrFail($id);
         $gerants->delete();
+        toastrNotification('warning', 'gerant deleted successfully');
+
 
         return redirect()->route('gerants.index')->with('success', 'Associé deleted successfully');
     }
